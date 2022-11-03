@@ -1,7 +1,6 @@
 # AI Driving with ML-Agents in Unity
 
 ## Running this project
-***
 
 1. Clone this repository and open it as a Unity Project through Unity Hub. I used Unity version **2021.3.12f1 LTS**.
 
@@ -15,7 +14,6 @@
 
 
 ## Setting up with ML-Agents [Release 19](https://github.com/Unity-Technologies/ml-agents/releases/tag/release_19)
-***
 
 1. Install [Python 3.7](https://www.python.org/downloads/release/python-379/)
 
@@ -62,7 +60,6 @@ venv\Scripts\activate.bat
     ```
 
 ## Using ML-Agents
-***
 
 To quickly test training inside the Unity Editor, open a command prompt, activate your virtual 
 environment, navigate to the project directory, run the following command, then press play inside the Unity project:
@@ -82,7 +79,7 @@ For a more detailed introduction to ML-Agents refer to [the documentation](https
 
 
 ## References
-***
+
 Training setup inspiration - [video 1](https://youtu.be/2X5m_nDBvS4), [video 2](https://youtu.be/n5rY9ffqryU).
 
 Checkpoint system - [video](https://youtu.be/IOYNg6v9sfc).
