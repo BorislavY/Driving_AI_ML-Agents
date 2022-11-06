@@ -29,17 +29,17 @@ private void Start()
 
     private void TrackCheckpoints_OnPlayerWrongCheckpoint(object sender, System.EventArgs e)
     {
-        AddReward(-1f);
+        AddReward(-0.1f);
     }
 
     private void TrackCheckpoints_OnPlayerCorrectCheckpoint(object sender, System.EventArgs e)
     {
-        AddReward(1f);
+        AddReward(0.1f);
     }
 
     private void TrackCheckpoints_OnPlayerLapCompleted(object sender, System.EventArgs e)
     {
-        AddReward(30f);
+        AddReward(3f);
         EndEpisode();
     }
 
@@ -51,11 +51,16 @@ private void Start()
     }
 
     public override void CollectObservations(VectorSensor sensor) {
-        Vector3 checkpointForward = trackCheckpoints.GetNextCheckpoint(transform).transform.forward;
-        float directionDot = Vector3.Dot(transform.forward, checkpointForward);
+        CheckpointSingle nextCheckpoint = trackCheckpoints.GetNextCheckpoint(transform);
+
+        float directionDot = Vector3.Dot(transform.forward, nextCheckpoint.transform.forward);
         sensor.AddObservation(directionDot);
+
+        Vector3 difference = nextCheckpoint.transform.position - transform.position;
+        sensor.AddObservation(difference / 10f); // Somewhat normalize
+
         // Small penalty on each time step to incentivise faster driving.
-        AddReward(-0.005f);
+        AddReward(-0.001f);
     }
 
     public override void OnActionReceived(ActionBuffers actions) {
@@ -92,13 +97,13 @@ private void Start()
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.TryGetComponent<Wall>(out Wall wall)) {
-            AddReward(-0.5f);
+            AddReward(-0.05f);
         }
     }
 
     private void OnCollisionStay(Collision collision) {
         if (collision.gameObject.TryGetComponent<Wall>(out Wall wall)) {
-            AddReward(-0.01f);
+            AddReward(-0.001f);
         }
 
     }

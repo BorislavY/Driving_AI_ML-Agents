@@ -71,6 +71,11 @@ the agent how to drive the track. More specifically, [PPO](https://openai.com/bl
 [GAIL](https://arxiv.org/abs/1606.03476) and Behavioral Cloning (i.e. supervised learning) is being used. 
 The [DrivingAI_IL.yaml](Assets/Configs/DrivingAI_IL.yaml) config file contains the hyperparameter details.
 
+A separate scene, **DrivingAITrainingNoBackward**, is configured for training agents with the backward action disabled.
+The model attached to the agents in that scene was trained through reinforcement learning alone with no imitation 
+learning. The [DrivingAI_NB.yaml](Assets/Configs/DrivingAI_NB.yaml) config file contains the hyperparameter details 
+of that training setup.
+
 For more details on how the project works and how ML-Agents is utilised, see **[my video](https://drive.google.com/file/d/1YveILeV5rLUFey9_JCqVJuBEGXI79Aa_/view?usp=share_link)**.
 
 For a quick introduction to ML-Agents you can refer to [this YouTube playlist](https://www.youtube.com/watch?v=zPFU30tbyKs&list=PLzDRvYVwl53vehwiN_odYJkPBzcqFw110).
